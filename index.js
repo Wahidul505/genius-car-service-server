@@ -107,6 +107,10 @@ run().catch(console.dir);
 
 app.get('/', (req, res) => {
     res.send('Server Setup');
+});
+
+app.get('/test', (req, res) => {
+    res.send('Testing after deployed in Heroku');
 })
 
 app.listen(port, () => console.log('listening to', port));
