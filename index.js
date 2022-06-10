@@ -9,6 +9,11 @@ const port = process.env.PORT || 5000;
 // middleware
 app.use(cors());
 app.use(express.json());
+app.use(
+    cors({
+        origin: "*",
+    })
+);
 
 async function verifyToken(req, res, next) {
     const authHeader = req.headers.authorization;
