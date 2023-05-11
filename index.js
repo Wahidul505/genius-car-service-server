@@ -21,7 +21,7 @@ async function verifyToken(req, res, next) {
     if (!token) {
         return res.status(401).send({ message: 'Unauthorized User' });
     }
-    jwt.verify(token, process.env.SECRET_ACCESS_TOKEN, (err, decoded) => {
+    jwt.verify(token, "742e3c6e0e616bc53e51e33403a129859dd87b5597664cf96333496c196e04834e40a80d81e67d7a05d931bac7e12dbb303bf75bf0c9f675052da4d5389ac941", (err, decoded) => {
         if (err) {
             return res.status(403).send({ message: 'Forbidden Access' });
         }
@@ -96,7 +96,7 @@ async function run() {
         // posting email from user to generate a token 
         app.post('/access', async (req, res) => {
             const user = req.body;
-            const token = await jwt.sign(user, process.env.SECRET_ACCESS_TOKEN, {
+            const token = await jwt.sign(user, "742e3c6e0e616bc53e51e33403a129859dd87b5597664cf96333496c196e04834e40a80d81e67d7a05d931bac7e12dbb303bf75bf0c9f675052da4d5389ac941", {
                 expiresIn: '1d'
             });
             res.send({ token });
